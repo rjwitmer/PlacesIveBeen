@@ -18,6 +18,8 @@
 		CCD755142AB39ADA002673F6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CCD755132AB39ADA002673F6 /* FirebaseStorage */; };
 		CCD755162AB39E89002673F6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD755152AB39E89002673F6 /* LoginView.swift */; };
 		CCD755182AB3A6B8002673F6 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD755172AB3A6B8002673F6 /* Place.swift */; };
+		CCDACC7F2AB4F825007DD6CA /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDACC7E2AB4F825007DD6CA /* PlaceViewModel.swift */; };
+		CCDACC812AB4FCE8007DD6CA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDACC802AB4FCE8007DD6CA /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		CCD7550A2AB39945002673F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCD755152AB39E89002673F6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CCD755172AB3A6B8002673F6 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		CCDACC7E2AB4F825007DD6CA /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
+		CCDACC802AB4FCE8007DD6CA /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +71,10 @@
 			children = (
 				CCD754FC2AB39734002673F6 /* PlacesIveBeenApp.swift */,
 				CCD755172AB3A6B8002673F6 /* Place.swift */,
-				CCD754FE2AB39734002673F6 /* ListView.swift */,
+				CCDACC7E2AB4F825007DD6CA /* PlaceViewModel.swift */,
 				CCD755152AB39E89002673F6 /* LoginView.swift */,
+				CCD754FE2AB39734002673F6 /* ListView.swift */,
+				CCDACC802AB4FCE8007DD6CA /* DetailView.swift */,
 				CCD755002AB39736002673F6 /* Assets.xcassets */,
 				CCD7550A2AB39945002673F6 /* GoogleService-Info.plist */,
 				CCD755022AB39736002673F6 /* Preview Content */,
@@ -165,6 +171,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD755162AB39E89002673F6 /* LoginView.swift in Sources */,
+				CCDACC812AB4FCE8007DD6CA /* DetailView.swift in Sources */,
+				CCDACC7F2AB4F825007DD6CA /* PlaceViewModel.swift in Sources */,
 				CCD754FF2AB39734002673F6 /* ListView.swift in Sources */,
 				CCD754FD2AB39734002673F6 /* PlacesIveBeenApp.swift in Sources */,
 				CCD755182AB3A6B8002673F6 /* Place.swift in Sources */,

@@ -20,10 +20,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct PlacesIveBeenApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var placeVM = PlaceViewModel()
     
     var body: some Scene {
         WindowGroup {
             LoginView()
+                .environmentObject(placeVM)
         }
     }
 }
