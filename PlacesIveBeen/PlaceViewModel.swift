@@ -7,6 +7,8 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseStorage
+import UIKit
 
 @MainActor
 
@@ -39,4 +41,53 @@ class PlaceViewModel: ObservableObject {
             }
         }
     }
+    
+    func deletePlace(place: Place) async {
+        let db = Firestore.firestore()
+        guard let id = place.id else {
+            print("😡 ERROR: place.id was nil. This should not have happened!")
+            return
+        }
+        
+        do {
+            let _ = try await db.collection(collectionName).document(id).delete()
+            print("🗑️ Place document successfully removed!")
+            return
+        } catch {
+            print("😡 ERROR: removing document: ➡️ \(error.localizedDescription)")
+            return
+        }
+    }
+    
+    func saveImage(id: String, image: UIImage) async {
+        let storage = Storage.storage()
+        let storageRef = storage.reference().child("\(id)/image.jpg")
+        
+        let resizedImage = image.jpegData(compressionQuality: 0.2)
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpg"
+        
+        if let resizedImage = resizedImage {
+            do {
+                let metadata = try await storageRef.putDataAsync(resizedImage)
+                print("Metadata: ", metadata)
+                print("📸 Image Saved!")
+            } catch {
+                print("😡 ERROR: Uploading image to Firebase Cloud Storage ➡️ \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func getImageURL(id: String) async -> URL? {
+        let storage = Storage.storage()
+        let storageRef = storage.reference().child("\(id)/image.jpg")
+        
+        do {
+            let url = try await storageRef.downloadURL()
+            return url
+        } catch {
+            return nil
+        }
+    }
+    
 }

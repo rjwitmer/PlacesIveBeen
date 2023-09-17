@@ -18,8 +18,9 @@ struct Place: Codable, Identifiable {
     var country = ""
     var flag = ""
     var traveledAs = TraveledAs.solo.rawValue
+    var imageID = ""
     
     var dictionary: [String: Any] {
-        return ["city": city, "country": country, "flag": flag, "traveledAs": traveledAs]
+        return ["city": city, "country": country, "flag": flag, "traveledAs": traveledAs, "imageID": imageID]
     }
 }

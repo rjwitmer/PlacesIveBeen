@@ -7,18 +7,34 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestoreSwift
 
 struct ListView: View {
+    @FirestoreQuery(collectionPath: "places") var places: [Place]
+    @EnvironmentObject var placeVM: PlaceViewModel
     @Environment(\.dismiss) private var dismiss
+    @State private var showSheet = false
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundColor(.accentColor)
-                Text("Hello, world!")
+            List {
+                ForEach(places) { place in
+                    NavigationLink {
+                        DetailView(place: place)
+                    } label: {
+                        Image(systemName: "mappin.and.ellipse")
+                            .foregroundColor(.blue)
+                        Text(place.city)
+                    }
+                }
+                .onDelete { indexSet in
+                    guard let index = indexSet.first else {return}
+                    Task {
+                        await placeVM.deletePlace(place: places[index])
+                    }
+                }
             }
+            .listStyle(.plain)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Sign Out") {
@@ -30,6 +46,19 @@ struct ListView: View {
                             print("😡 ERROR: Could not sign out! \(error.localizedDescription)")
                         }
                     }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showSheet.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+
+                }
+            }
+            .sheet(isPresented: $showSheet) {
+                NavigationStack {
+                    DetailView(place: Place())
                 }
             }
         }
